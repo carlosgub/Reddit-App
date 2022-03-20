@@ -4,6 +4,5 @@ import com.carlosgub.redditapp.features.top.presentation.model.PostModel
 
 sealed class TopPostVS {
     class TopPosts(val posts: PostModel):TopPostVS()
-    class Error(val message:String?):TopPostVS()
     class ShowLoader(val showLoader:Boolean):TopPostVS()
 }

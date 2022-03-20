@@ -40,9 +40,6 @@ class TopPostActivity : AppCompatActivity(), TopPostAdapter.Listener {
                     binding.rvMain.isVisible = !it.showLoader
                     binding.pbTopPost.isVisible = it.showLoader
                 }
-                is TopPostVS.Error -> {
-
-                }
             }
         })
         postAdapter.clear()

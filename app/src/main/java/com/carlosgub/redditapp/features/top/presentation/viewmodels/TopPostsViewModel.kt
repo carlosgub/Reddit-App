@@ -22,7 +22,7 @@ class TopPostsViewModel @Inject constructor(
 
     val viewState: LiveData<TopPostVS> get() = mViewState
     private val mViewState = MutableLiveData<TopPostVS>()
-    var job: Job? = null
+    private var job: Job? = null
 
     fun getTopPost() {
         mViewState.value = TopPostVS.ShowLoader(true)
