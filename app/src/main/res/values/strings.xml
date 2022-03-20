@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Reddit App</string>
+
+    <!--region Top Post View-->
+    <string name="top_post_author">Published by %s, %d %s ago</string>
+    <string name="number_of_comments">%d Comments</string>
+    <!--endregion-->
+    
+    <!--region Time Unit-->
+    <string name="time_unit_minute">min</string>
+    <string name="time_unit_hours">hours</string>
+    <!--endregion-->
 </resources>

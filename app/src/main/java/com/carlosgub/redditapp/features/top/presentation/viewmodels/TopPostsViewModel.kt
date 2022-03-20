@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.carlosgub.redditapp.core.interactor.Interactor
 import com.carlosgub.redditapp.features.top.domain.interactor.GetTopPostInteractor
+import com.carlosgub.redditapp.features.top.presentation.model.mapper.PostMapper
 import com.carlosgub.redditapp.features.top.presentation.viewmodels.states.TopPostVS
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -24,13 +25,17 @@ class TopPostsViewModel @Inject constructor(
     var job: Job? = null
 
     fun getTopPost() {
+        mViewState.value = TopPostVS.ShowLoader(true)
         job = CoroutineScope(Dispatchers.IO).launch {
             getTopPostInteractor.execute(Interactor.None)
                 .collect {
-                    withContext(Dispatchers.Main){
-                        mViewState.value = TopPostVS.TopPosts(it)
+                    withContext(Dispatchers.Main) {
+                        mViewState.value = TopPostVS.TopPosts(PostMapper.map(it))
                     }
                 }
+            withContext(Dispatchers.Main){
+                mViewState.value = TopPostVS.ShowLoader(false)
+            }
         }
     }
 

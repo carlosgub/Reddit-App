@@ -1,9 +1,9 @@
 package com.carlosgub.redditapp.features.top.presentation.viewmodels.states
 
-import com.carlosgub.redditapp.features.top.data.datasource.response.DataChildrenDataTopPostResponse
+import com.carlosgub.redditapp.features.top.presentation.model.PostModel
 
 sealed class TopPostVS {
-    class TopPosts(val posts: DataChildrenDataTopPostResponse):TopPostVS()
+    class TopPosts(val posts: PostModel):TopPostVS()
     class Error(val message:String?):TopPostVS()
     class ShowLoader(val showLoader:Boolean):TopPostVS()
 }
